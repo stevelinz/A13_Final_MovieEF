@@ -3,7 +3,7 @@ using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using MovieLibraryOO.Context;
 
-namespace MovieLibraryOO.Queries
+namespace MovieLibraryOO.CRUD
 {
     public class Search
     {

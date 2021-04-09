@@ -1,5 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using MovieLibraryOO.Queries;
+using MovieLibraryOO.CRUD;
 
 namespace MovieLibraryOO
 {
@@ -10,11 +10,14 @@ namespace MovieLibraryOO
             // DEPENDENCY INJECTION
             var serviceProvider = new ServiceCollection().BuildServiceProvider();
 
+            Menu menu = new Menu();
+            menu.menuSelect();
+
             // Search search = new Search();
             // search.searchMovie();
 
-            Add add = new Add();
-            add.AddMovie();
+            // Add add = new Add();
+            // add.AddMovie();
            
 
            // System.Console.WriteLine("\nThanks for using the Movie Library!");
