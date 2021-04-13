@@ -28,7 +28,6 @@ namespace MovieLibraryOO.CRUD
                     count++;
                 }
                 System.Console.WriteLine("\n" + count + " movie(s) fit this search. ");
-                if (count == 0) System.Console.WriteLine("NO RESULTS FOUND.");
                 System.Console.WriteLine("\n");             
                 menu.menuSelect();
             }

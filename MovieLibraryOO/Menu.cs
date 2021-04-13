@@ -9,33 +9,32 @@ namespace MovieLibraryOO
         {
             goAgain:
             startUp();
-            var pickOne = System.Console.ReadKey();
-            Console.TreatControlCAsInput = true;
-            switch (pickOne.KeyChar)
+            var pickOne = System.Console.ReadLine();
+            switch (pickOne)
             {
-                case '1':
+                case "1":
                  Search search = new Search();
                  search.searchMovie();
                 break;
-                 case '2':
+                 case "2":
                  Add add = new Add();
                  add.AddMovie();
                  break;
-                 case '3':
+                 case "3":
                  Update update = new Update();
                  update.updateMovie();
                 break;
-                 case '4':
+                 case "4":
                  Delete delete = new Delete();
                  delete.deleteMovie();
                 break;
-                 case 'q':
+                 case "q":
                  File.Delete("pass.cnn");
                  File.Delete("user.cnn");
                  System.Environment.Exit(0);
                  break;
                 default:
-                System.Console.WriteLine(" ← Wrong input.");
+                System.Console.WriteLine(" <- Wrong input.");
                 goto goAgain;
             }
             startUp();
