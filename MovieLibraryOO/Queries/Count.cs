@@ -30,7 +30,7 @@ namespace MovieLibraryOO.Queries
             {
                 System.Console.WriteLine("\nWrong login or password");
                 Console.ForegroundColor = ConsoleColor.DarkRed;
-                System.Console.WriteLine("CAN NOT OPEN THE DATABASE\t" + "\U0001F914"+"\n");
+                System.Console.WriteLine("CAN NOT OPEN THE DATABASE\t"+"\n");
                 File.Delete("pass.cnn");
                 File.Delete("user.cnn");
                 Console.ForegroundColor = ConsoleColor.White;

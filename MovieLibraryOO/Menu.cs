@@ -42,11 +42,11 @@ namespace MovieLibraryOO
             void startUp()
             {
             Console.ForegroundColor = ConsoleColor.Blue;
-            Console.WriteLine("\n\t▍    "+" YOUR MOVⅠE SELEⅭTⅠON"+ "       ▍");
+            Console.WriteLine("\n\t|    "+" YOUR MOVIE SELECTION"+ "       |");
             Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine("\t▍ "+"search add update delete quit"+ "  ▍");
+            Console.WriteLine("\t| "+"search add update delete quit"+ "  |");
             Console.ForegroundColor = ConsoleColor.White;
-            System.Console.WriteLine("\t   ①      ②     ③     ④     Ⓠ"); 
+            System.Console.WriteLine("\t   1      2     3     4     Q"); 
             }
         }
     }
