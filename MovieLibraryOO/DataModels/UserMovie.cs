@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-
 namespace MovieLibraryOO.DataModels
 {
     public class UserMovie

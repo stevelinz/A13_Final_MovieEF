@@ -1,0 +1,21 @@
+SELECT m.Title, g.genres
+from movies.m
+JOIN m.
+
+
+SELECT * FROM MovieGenres where MovieId = 1
+  select * from movies where Id = 1
+  select * from genres where Id in (3,4,5) 
+  select * from genres where Id in (SELECT GenreId FROM MovieGenres where MovieId = 1) 
+  SELECT GenreId FROM MovieGenres where MovieId = 1 
+
+  --#############################################
+  
+  SELECT distinct m.title, g.name 
+  from movies m
+  join MovieGenres mg on mg.MovieId = m.Id
+  join Genres g on g.Id = mg.GenreId
+  where mg.MovieId = 1
+
+  --#############################################
+  

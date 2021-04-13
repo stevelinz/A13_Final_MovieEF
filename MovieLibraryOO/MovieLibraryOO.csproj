@@ -9,11 +9,19 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="ConsoleTables" Version="2.4.2"/>
-    <PackageReference Include="CsvHelper" Version="22.1.2"/>
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="5.0.1"/>
-    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.4"/>
-    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.4"/>
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.4"/>
+     <None Update="appsettings.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.5">
+       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+       <PrivateAssets>all</PrivateAssets>
+     </PackageReference>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="5.0.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.5" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.5" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.5">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
   </ItemGroup>
 </Project>

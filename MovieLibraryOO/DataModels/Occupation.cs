@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace MovieLibraryOO.DataModels
+﻿namespace MovieLibraryOO.DataModels
 {
     public class Occupation
     {
