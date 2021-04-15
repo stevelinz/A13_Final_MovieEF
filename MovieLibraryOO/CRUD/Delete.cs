@@ -33,7 +33,7 @@ namespace MovieLibraryOO.CRUD
                 }
                 context.Remove(movie);
                 context.SaveChanges();
-
+                menu.menuSelect();
             }
 
             catch (System.Exception)
