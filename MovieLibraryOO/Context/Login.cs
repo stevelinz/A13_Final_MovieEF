@@ -6,6 +6,8 @@ namespace MovieLibraryOO
 {
     public class Login
     {
+        // to create a username/password system: 2 .cnn files are written
+        // these files are deleted at exit
         private string userName = "";
         private string passWord = "";
         public string userPath = Path.Combine(Environment.CurrentDirectory, "user.cnn");

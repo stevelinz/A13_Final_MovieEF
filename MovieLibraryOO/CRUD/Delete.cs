@@ -1,10 +1,8 @@
-using System.Data.Common;
 using System;
 using MovieLibraryOO.Context;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.IO;
-
 namespace MovieLibraryOO.CRUD
 {
     public class Delete
@@ -13,23 +11,34 @@ namespace MovieLibraryOO.CRUD
         {
             try
             {
-
-                MovieContext db = new MovieContext();
                 Menu menu = new Menu();
                 System.Console.WriteLine("\tIdentify the Movie to delete.");
                 lookThenDelete();
                 System.Console.Write("\tDelete the movie by entering it's ID or [a]bort:\t");
                 var movId = System.Console.ReadLine();
-                if(movId.Equals("a")||movId.Equals("q")) menu.menuSelect();
+                if (movId.Equals("a") || movId.Equals("q")) menu.menuSelect();
                 int movIdDel = Int32.Parse(movId);
 
-                db.Remove(db.Movies.Single(d => d.Id == movIdDel));
-                db.SaveChanges();
-                menu.menuSelect();
+                var context = new MovieContext();
+                var movie = context.Movies.Single(a => a.Id == movIdDel);
+                var movieGenres = context.MovieGenres.Where(b => EF.Property<int>(b, "MovieId") == movIdDel);
+                foreach (var movieGenre in movieGenres)
+                {
+                   movie.MovieGenres.Remove(movieGenre);
+                }
+                var userMovies = context.UserMovies.Where(b => EF.Property<int>(b, "MovieId") == movIdDel);
+                foreach (var userMovie in userMovies)
+                {
+                   movie.UserMovies.Remove(userMovie);
+                }
+                context.Remove(movie);
+                context.SaveChanges();
+
             }
 
             catch (System.Exception)
             {
+              
                 System.Console.WriteLine("Opps ... wrong login or password ....");
                 System.Console.WriteLine("\t....(Or maybe you forced an exit (Ctl+C)) ");
                 System.Console.WriteLine("\t...........(Or maybe an incorrect input) ");

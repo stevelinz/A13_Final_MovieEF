@@ -29,12 +29,13 @@ namespace MovieLibraryOO
                  delete.deleteMovie();
                 break;
                  case "q":
+                 case "Q":
                  File.Delete("pass.cnn");
                  File.Delete("user.cnn");
                  System.Environment.Exit(0);
                  break;
                 default:
-                System.Console.WriteLine(" <- Wrong input.");
+                System.Console.Write(" <- Wrong input.");
                 goto goAgain;
             }
             startUp();

@@ -24,7 +24,14 @@ namespace MovieLibraryOO.CRUD
                 System.Console.WriteLine("\t――――――――――――――――――――――――――――――――――");
                 foreach (var showMovie in movieList)
                 {
-                    System.Console.WriteLine("ID: " + showMovie.Id + " " + showMovie.Title);
+                    if(count < 9)
+                    {
+                        System.Console.WriteLine("[0" + (count + 1) + "] ID: " + showMovie.Id + " " + showMovie.Title);
+                    }
+                    else
+                    {
+                        System.Console.WriteLine("[" + (count + 1) + "] ID: " + showMovie.Id + " " + showMovie.Title);
+                    }
                     count++;
                 }
                 System.Console.WriteLine("\n" + count + " movie(s) fit this search. ");
