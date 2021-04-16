@@ -26,11 +26,13 @@ namespace MovieLibraryOO.CRUD
                 {
                     if(count < 9)
                     {
-                        System.Console.WriteLine("[0" + (count + 1) + "] ID: " + showMovie.Id + " " + showMovie.Title);
+                        System.Console.WriteLine("[0" + (count + 1) + "] ID: " 
+                        + showMovie.Id + " " + showMovie.Title);
                     }
                     else
                     {
-                        System.Console.WriteLine("[" + (count + 1) + "] ID: " + showMovie.Id + " " + showMovie.Title);
+                        System.Console.WriteLine("[" + (count + 1) + "] ID: " 
+                        + showMovie.Id + " " + showMovie.Title);
                     }
                     count++;
                 }

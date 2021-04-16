@@ -53,7 +53,7 @@ namespace MovieLibraryOO.CRUD
             .FromSqlRaw($"SELECT * FROM dbo.Movies where Title like '%" + search + "%'").ToList();
             foreach (var showMovie in movieList)
             {
-                System.Console.WriteLine("ID: " + showMovie.Id + "\t" + showMovie.Title);
+                System.Console.WriteLine("ID: " + showMovie.Id + " " + showMovie.Title);
                 count++;
             }
             if (count == 0) System.Console.WriteLine("NO RESULTS FOUND.");

@@ -12,14 +12,22 @@ namespace MovieLibraryOO.CRUD
             Menu menu = new Menu();
             try
             {
-                System.DateTime date = DateTime.Today;         
+                System.DateTime date = DateTime.Today;
                 addExplain();
                 var addMovieInput = Console.ReadLine();
-                if(addMovieInput.Equals("a")||addMovieInput.Equals("q")) menu.menuSelect();
-                using (var db = new MovieContext())
+                if (addMovieInput.Equals("a") || addMovieInput.Equals("q"))
                 {
-                    db.Movies.Add(new Movie { Title = addMovieInput, ReleaseDate = date });
-                    db.SaveChanges();
+                    menu.menuSelect();
+                }
+                else
+                {
+                    using (var db = new MovieContext())
+                    {
+                        var movie = new Movie { Title = addMovieInput, ReleaseDate = date };
+                        db.Add(movie);
+                        db.SaveChanges();
+                        menu.menuSelect();
+                    }
                 }
             }
             catch (System.Exception)
@@ -32,8 +40,6 @@ namespace MovieLibraryOO.CRUD
                 File.Delete("user.cnn");
                 System.Environment.Exit(0);
             }
-            
-            menu.menuSelect();
         }
         void addExplain()
         {
