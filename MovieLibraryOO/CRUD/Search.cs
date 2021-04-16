@@ -14,8 +14,8 @@ namespace MovieLibraryOO.CRUD
             try
             {
                 int count = 0;
-               MovieContext db = new MovieContext();
-           andAgain:
+                MovieContext db = new MovieContext();
+                andAgain:
                 System.Console.Write("\tProvide part of the title: \t");
                 var search = Console.ReadLine();
                 if (search.Length < 2) goto andAgain;
