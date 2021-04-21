@@ -1,13 +1,19 @@
-﻿namespace MovieLibraryOO
+﻿using System.Linq;
+using Microsoft.EntityFrameworkCore;
+using MovieLibraryOO.Context;
+
+namespace MovieLibraryOO
 {
-       internal class Program
+    internal class Program
     {
         private static void Main(string[] args)
         {
-             Login login = new Login();           
-             login.userConnectionString();       
+            Login login = new Login();
+            login.userConnectionString();
         }
 
     }
 
 }
+
+

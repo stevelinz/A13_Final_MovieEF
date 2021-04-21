@@ -1,6 +1,8 @@
 using System;
 using System.IO;
 using MovieLibraryOO.CRUD;
+using MovieLibraryOO.Queries;
+
 namespace MovieLibraryOO
 {
     public class Menu
@@ -28,9 +30,13 @@ namespace MovieLibraryOO
                  update.updateMovie();
                 break;
                  case "4":
-                 case "d":
                  Delete delete = new Delete();
                  delete.deleteMovie();
+                 break;
+                 case "5":
+                 case "d":
+                 DisplayMovies display = new DisplayMovies();
+                 display.displayAllMovies();
                 break;
                  case "q":
                  case "Q":
@@ -50,6 +56,10 @@ namespace MovieLibraryOO
             Console.ForegroundColor = ConsoleColor.Blue;
             Console.WriteLine("\n\t|    "+" YOUR MOVIE SELECTION"+ "       |");
             Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("\t| "+"search add update delete show"+ "  |");
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.WriteLine("\n\t|    "+" YOUR QUERY SELECTION"+ "       |");
+            System.Console.WriteLine("\t   1      2     3     4     5"); 
             Console.WriteLine("\t| "+"search add update delete quit"+ "  |");
             Console.ForegroundColor = ConsoleColor.White;
             System.Console.WriteLine("\t   1      2     3     4     Q"); 
