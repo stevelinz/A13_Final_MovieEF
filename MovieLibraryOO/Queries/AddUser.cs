@@ -14,7 +14,7 @@ namespace MovieLibraryOO.Queries
             var ageInt = 0;
             var gender = "";
             var zip = "";
-            var occ = "";
+           // var occ = "";
             System.Console.Write("Create a new User ");
             Console.ForegroundColor = ConsoleColor.Red;
             System.Console.WriteLine("Wizard");
