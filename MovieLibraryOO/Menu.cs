@@ -11,11 +11,13 @@ namespace MovieLibraryOO
         {
             goAgain:
             startUp();
+            NLogger nLogger = new NLogger();
             var pickOne = System.Console.ReadLine();
             switch (pickOne)
             {
                 case "1":
                 case "s":
+                nLogger.nLog("New Movie Search");
                  Search search = new Search();
                  search.searchMovie();
                 break;
