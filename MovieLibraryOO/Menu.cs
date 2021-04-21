@@ -40,6 +40,10 @@ namespace MovieLibraryOO
                  DisplayMovies display = new DisplayMovies();
                  display.displayAllMovies();
                 break;
+                case "6":
+                AddUser addUser = new AddUser();
+                addUser.newUserCreate();    
+                break;
                  case "q":
                  case "Q":
                  File.Delete("pass.cnn");
@@ -59,12 +63,14 @@ namespace MovieLibraryOO
             Console.WriteLine("\n\t|    "+" YOUR MOVIE SELECTION"+ "       |");
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("\t| "+"search add update delete show"+ "  |");
+            Console.ForegroundColor = ConsoleColor.White;
+            System.Console.WriteLine("\t   1      2     3     4     5"); 
             Console.ForegroundColor = ConsoleColor.Blue;
             Console.WriteLine("\n\t|    "+" YOUR QUERY SELECTION"+ "       |");
-            System.Console.WriteLine("\t   1      2     3     4     5"); 
-            Console.WriteLine("\t| "+"search add update delete quit"+ "  |");
+             Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("\t| "+"NewUser add update delete quit"+ " |");
             Console.ForegroundColor = ConsoleColor.White;
-            System.Console.WriteLine("\t   1      2     3     4     Q"); 
+            System.Console.WriteLine("\t   6      7     8     9     Q"); 
             }
         }
     }
