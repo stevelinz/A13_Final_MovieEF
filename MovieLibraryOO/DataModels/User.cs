@@ -10,5 +10,6 @@ namespace MovieLibraryOO.DataModels
 
         public virtual Occupation Occupation { get; set; }
         public virtual ICollection<UserMovie> UserMovies {get;set;}
+      
     }
 }

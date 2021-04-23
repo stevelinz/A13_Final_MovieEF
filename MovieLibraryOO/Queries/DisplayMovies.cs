@@ -50,7 +50,7 @@ namespace MovieLibraryOO.Queries
                         {
                             System.Console.Write("Continue any key or (E)xit to go to Menu?\t");
                             var nextMove = Console.ReadLine();
-                            if(nextMove == "E" || nextMove == "e")
+                            if(nextMove == "E" || nextMove == "e" || nextMove == "Q" || nextMove == "q")
                             {
                                 Menu menu = new Menu();
                                 menu.menuSelect();
