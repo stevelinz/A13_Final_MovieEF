@@ -1,12 +1,8 @@
-using System.Reflection.Metadata;
-using System.Runtime.InteropServices;
 using MovieLibraryOO.Context;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System;
-using System.ComponentModel.DataAnnotations.Schema;
 using MovieLibraryOO.DataModels;
-using Microsoft.EntityFrameworkCore.Infrastructure;
 
 namespace MovieLibraryOO.Queries
 {
@@ -15,11 +11,10 @@ namespace MovieLibraryOO.Queries
         long idUsed = 0;
         public void newUserCreate()
         {
-             Menu menu = new Menu();
-            
+            Menu menu = new Menu();
+
             try
             {
-                
                 var age = "";
                 var ageInt = 0;
                 var gender = "";
@@ -31,9 +26,9 @@ namespace MovieLibraryOO.Queries
                 System.Console.WriteLine("Wizard");
                 Console.ForegroundColor = ConsoleColor.White;
                 Console.ForegroundColor = ConsoleColor.Blue;
-                System.Console.Write("Step 1 of 4: Age?\t");
+                System.Console.Write("Step 1 of 4: Age?\t\t");
                 Console.ForegroundColor = ConsoleColor.White;
-            andAgain:
+                andAgain:
                 age = Console.ReadLine();
                 if (!Int32.TryParse(age, out ageInt))
                 {
@@ -46,15 +41,15 @@ namespace MovieLibraryOO.Queries
                     goto andAgain;
                 }
                 Console.ForegroundColor = ConsoleColor.Blue;
-                System.Console.Write("Step 2 of 4: Gender?\t");
+                System.Console.Write("Step 2 of 4: Gender? [M/F]\t");
                 Console.ForegroundColor = ConsoleColor.White;
 
-            andTryAgain:
+                andTryAgain:
                 gender = Console.ReadLine();
                 if (gender.Equals("M") || gender.Equals("m") || gender.Equals("F") || gender.Equals("f"))
                 {
-                    if(gender.Equals("m")) gender = "M";
-                    if(gender.Equals("f")) gender = "F";
+                    if (gender.Equals("m")) gender = "M";
+                    if (gender.Equals("f")) gender = "F";
                 }
                 else
                 {
@@ -63,7 +58,7 @@ namespace MovieLibraryOO.Queries
                     goto andTryAgain;
                 }
                 Console.ForegroundColor = ConsoleColor.Blue;
-                System.Console.Write("Step 3 of 4: Zipcode?\t");
+                System.Console.Write("Step 3 of 4: Zipcode?\t\t");
                 Console.ForegroundColor = ConsoleColor.White;
 
                 andTryZipAgain:
@@ -103,7 +98,7 @@ namespace MovieLibraryOO.Queries
                         }
                     }
                 }
-                System.Console.WriteLine("\nSelect the ID of your occupation");
+                System.Console.Write("\nSelect the ID of user's occupation\t");
 
                 andOccAgain:
                 occ = Console.ReadLine();
@@ -115,51 +110,42 @@ namespace MovieLibraryOO.Queries
 
                 // end of gathering new user data
 
-               
-
-
                 using (var db = new MovieContext())
                 {
                     var user = db.Users.Include(x => x.Occupation).FirstOrDefault();
-                    
-                     user = new User { Age = ageInt, Gender = gender, ZipCode = zip};
 
-                    
-                    
+                    user = new User { Age = ageInt, Gender = gender, ZipCode = zip };
+
                     db.Add(user);
-                   
 
                     db.SaveChanges();
 
-                    System.Console.WriteLine(user.Id);
                     idUsed = user.Id;
 
                     db.Database.ExecuteSqlInterpolated($"UPDATE Users SET occupationId =  {occInt} WHERE Id = {user.Id} ");
 
                     db.SaveChanges();
-                  //  menu.menuSelect();
                 }
             }
-            catch (System.Exception e)
+            catch (System.Exception)
             {
-
-                System.Console.WriteLine(e);
+                System.Console.WriteLine("Something has gone wrong adding a user, please login and try again.");
             }
-
 
             using (var db = new MovieContext())
             {
-               
+
                 var users = db.Users.Include(x => x.Occupation)
                                     .Where(x => x.Id == idUsed).ToList();
-                System.Console.WriteLine("\n");
                 foreach (var user in users)
                 {
-                    System.Console.WriteLine($"User Added: ({user.Id}) {user.Age} {user.Gender} {user.ZipCode} {user.Occupation.Name}");
+                     Console.ForegroundColor = ConsoleColor.DarkRed;
+                    System.Console.WriteLine($"User Added: ({user.Id}) Age: {user.Age} Sex: {user.Gender} Zip: {user.ZipCode} {user.Occupation.Name}");
+                     Console.ForegroundColor = ConsoleColor.White;
                 }
             }
 
-             menu.menuSelect();
+            menu.menuSelect();
 
         }
 

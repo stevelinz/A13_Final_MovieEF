@@ -26,16 +26,15 @@ namespace MovieLibraryOO.Queries
                 var menu = new Menu();
                 menu.menuSelect();
             }
-            catch (System.Exception e)
+            catch (System.Exception)
             {
-                System.Console.WriteLine(e);
-                // System.Console.WriteLine("\nWrong login or password");
-                // Console.ForegroundColor = ConsoleColor.DarkRed;
-                // System.Console.WriteLine("CAN NOT OPEN THE DATABASE\t"+"\n");
-                // File.Delete("pass.cnn");
-                // File.Delete("user.cnn");
-                // Console.ForegroundColor = ConsoleColor.White;
-                // System.Environment.Exit(0);
+                System.Console.WriteLine("\nWrong login or password");
+                Console.ForegroundColor = ConsoleColor.DarkRed;
+                System.Console.WriteLine("CAN NOT OPEN THE DATABASE\t"+"\n");
+                File.Delete("pass.cnn");
+                File.Delete("user.cnn");
+                Console.ForegroundColor = ConsoleColor.White;
+                System.Environment.Exit(0);
             }
         }
     }
