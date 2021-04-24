@@ -3,6 +3,7 @@ using System.IO;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using MovieLibraryOO.Context;
+using MovieLibraryOO.Queries;
 
 namespace MovieLibraryOO.CRUD
 {
@@ -14,8 +15,9 @@ namespace MovieLibraryOO.CRUD
             try
             {
                 int count = 0;
-                MovieContext db = new MovieContext();
                 andAgain:
+                MovieContext db = new MovieContext();
+               
                 System.Console.Write("\tProvide part of the title: \t");
                 var search = Console.ReadLine();
                 if (search.Length < 2) goto andAgain;
@@ -37,9 +39,31 @@ namespace MovieLibraryOO.CRUD
                     count++;
                 }
                 System.Console.WriteLine("\n" + count + " movie(s) fit this search. ");
-                System.Console.WriteLine("\n");             
-                menu.menuSelect();
+                System.Console.WriteLine("\n"); 
+
+                System.Console.Write("Do you want to [S]earch Movies again?\t");
+                System.Console.Write("(Any other key to Continue)\t");
+                var reSearch = Console.ReadLine();
+                UserRating userRating = new UserRating(); 
+                string testRate = System.IO.File.ReadAllText(Path.Combine(System.Environment.CurrentDirectory, "rate.sav"));
+                System.Console.WriteLine(testRate);
+                if(reSearch == "S" || reSearch == "s")
+                {
+                   count = 0;
+                   goto andAgain; 
+                }
+
+                if(!testRate.Equals("rate"))
+                {
+                     userRating.rateReturn();
+                }   
+                else
+                {
+                   menu.menuSelect();
+                }
+                 
             }
+           
             catch (System.Exception)
             {
                 System.Console.WriteLine("Opps ... wrong login or password .... ");
@@ -51,6 +75,7 @@ namespace MovieLibraryOO.CRUD
                 System.Environment.Exit(0);
             }
 
+          
         }
     }
 }

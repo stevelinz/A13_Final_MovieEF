@@ -25,7 +25,7 @@ namespace MovieLibraryOO.Queries
                 Console.ForegroundColor = ConsoleColor.Red;
                 System.Console.WriteLine("Wizard");
                 Console.ForegroundColor = ConsoleColor.White;
-                Console.ForegroundColor = ConsoleColor.Blue;
+                Console.ForegroundColor = ConsoleColor.Yellow;
                 System.Console.Write("Step 1 of 4: Age?\t\t");
                 Console.ForegroundColor = ConsoleColor.White;
                 andAgain:
@@ -40,7 +40,7 @@ namespace MovieLibraryOO.Queries
                     System.Console.WriteLine("An age between 1 and 120");
                     goto andAgain;
                 }
-                Console.ForegroundColor = ConsoleColor.Blue;
+                Console.ForegroundColor = ConsoleColor.Yellow;
                 System.Console.Write("Step 2 of 4: Gender? [M/F]\t");
                 Console.ForegroundColor = ConsoleColor.White;
 
@@ -57,7 +57,7 @@ namespace MovieLibraryOO.Queries
                     gender = "";
                     goto andTryAgain;
                 }
-                Console.ForegroundColor = ConsoleColor.Blue;
+                Console.ForegroundColor = ConsoleColor.Yellow;
                 System.Console.Write("Step 3 of 4: Zipcode?\t\t");
                 Console.ForegroundColor = ConsoleColor.White;
 
@@ -81,19 +81,19 @@ namespace MovieLibraryOO.Queries
                         if (occCount == 2) System.Console.WriteLine();
                         if (occCount == 3)
                         {
-                            System.Console.Write($" \tID: ({occList.Id}) for {occList.Name}\n");
+                            System.Console.Write($" \tID: ({occList.Id}) ___ {occList.Name}\n");
                             occCount++;
                             continue;
                         }
 
                         if (occCount % 2 == 1)
                         {
-                            System.Console.Write($"\t\tID: ({occList.Id}) for {occList.Name}\n");
+                            System.Console.Write($"\t\tID: ({occList.Id}) ___ {occList.Name}\n");
                             occCount++;
                         }
                         else
                         {
-                            System.Console.Write($"ID: ({occList.Id}) for {occList.Name}");
+                            System.Console.Write($"ID: ({occList.Id}) ___ {occList.Name}");
                             occCount++;
                         }
                     }
@@ -129,7 +129,8 @@ namespace MovieLibraryOO.Queries
             }
             catch (System.Exception)
             {
-                System.Console.WriteLine("Something has gone wrong adding a user, please login and try again.");
+                System.Console.WriteLine("Something has gone wrong adding a user, please try again.");
+                menu.menuSelect();
             }
 
             using (var db = new MovieContext())
@@ -139,7 +140,7 @@ namespace MovieLibraryOO.Queries
                                     .Where(x => x.Id == idUsed).ToList();
                 foreach (var user in users)
                 {
-                     Console.ForegroundColor = ConsoleColor.DarkRed;
+                     Console.ForegroundColor = ConsoleColor.Green;
                     System.Console.WriteLine($"User Added: ({user.Id}) Age: {user.Age} Sex: {user.Gender} Zip: {user.ZipCode} {user.Occupation.Name}");
                      Console.ForegroundColor = ConsoleColor.White;
                 }
