@@ -1,3 +1,4 @@
+using System.Runtime.InteropServices;
 using System;
 using System.IO;
 using System.Linq;
@@ -64,15 +65,16 @@ namespace MovieLibraryOO.CRUD
                  
             }
            
-            catch (System.Exception)
+            catch (System.Exception e)
             {
-                System.Console.WriteLine("Opps ... wrong login or password .... ");
-                System.Console.WriteLine("\t...(Or maybe you forced an exit (Ctl+C)) ");
-                System.Console.WriteLine("\t...(Or maybe an incorrect input  ");
-                System.Console.WriteLine("\tas you started to look-up Movies ");
-                File.Delete("pass.cnn");
-                File.Delete("user.cnn");
-                System.Environment.Exit(0);
+                System.Console.WriteLine(e);
+                // System.Console.WriteLine("Opps ... wrong login or password .... ");
+                // System.Console.WriteLine("\t...(Or maybe you forced an exit (Ctl+C)) ");
+                // System.Console.WriteLine("\t...(Or maybe an incorrect input  ");
+                // System.Console.WriteLine("\tas you started to look-up Movies ");
+                // File.Delete("pass.cnn");
+                // File.Delete("user.cnn");
+                // System.Environment.Exit(0);
             }
 
           

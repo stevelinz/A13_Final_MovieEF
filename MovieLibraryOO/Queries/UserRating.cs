@@ -10,6 +10,7 @@ namespace MovieLibraryOO.Queries
 {
     public class UserRating
     {
+        
         public void UserRatesMovie()
         {
             Menu menu = new Menu();
@@ -61,6 +62,8 @@ namespace MovieLibraryOO.Queries
 
             }
         }
+          
+         
             public bool rateReturn()
             {
                 Menu menu = new Menu();
@@ -82,9 +85,9 @@ namespace MovieLibraryOO.Queries
                 Console.ForegroundColor = ConsoleColor.Yellow;
                 System.Console.Write("Step 4 of 4: Select Rating\t\t");
                 Console.ForegroundColor = ConsoleColor.White;
-                System.IO.File.ReadAllText(Path.Combine(System.Environment.CurrentDirectory, "rate.sav")); 
+                
 
-              System.Console.WriteLine("1 star  - hated it ");
+              System.Console.WriteLine("\n1 star  - hated it ");
               System.Console.WriteLine("2 stars - didn't like it"); 
               System.Console.WriteLine("3 stars - it was ok");
               System.Console.WriteLine("4 stars - really liked it");
@@ -99,50 +102,32 @@ namespace MovieLibraryOO.Queries
                 System.Console.Write("\t Entering the User's ID\t");
                 goto andRateAgain;
             }
-
             using (var db = new MovieContext())
                 {
-                  //  var user = db.Users.Include(x => x.Occupation).FirstOrDefault();
+                    System.DateTime date = DateTime.Today;
+                    string userWhoRates = System.IO.File.ReadAllText(Path.Combine(System.Environment.CurrentDirectory, "rate.sav")); 
+                    var userRates = db.UserMovies.Include(x => x.User).Include(x => x.Movie).FirstOrDefault();
 
-                    // user = new User { Age = ageInt, Gender = gender, ZipCode = zip };
+                    userRates = new UserMovie { Rating = userRateInt, RatedAt = date };
 
-                    // db.Add(user);
+                    db.Add(userRates);
 
-                    // db.SaveChanges();
+                      db.SaveChanges();
 
-                    // idUsed = user.Id;
+                     db.Database.ExecuteSqlInterpolated($"UPDATE UserMovies SET UserId = {userWhoRates}, MovieId = {movIdInt} WHERE Id = {userRates.Id} ");
 
-                  //  db.Database.ExecuteSqlInterpolated($"UPDATE Users SET occupationId =  {occInt} WHERE Id = {user.Id} ");
-
-                  //  db.SaveChanges();
+                      db.SaveChanges();
                 }
-
-                
-
-               
-
 
                 return true;
             }
-              
-                
-            }
+        }
+
+  
 
         }
 
-        //if not exist
-        //goAgain
-        //else [store User]
-        //ask user to search movies
-        //if found
-        //ask user to enter ID
-        //else searchAgain
-        //user assigns rating
-        // ratedAt time assigned
-        // = display user
-        // = movie
-        // = rating
-
+    
     
 
 
