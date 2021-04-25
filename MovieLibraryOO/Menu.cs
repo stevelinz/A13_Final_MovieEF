@@ -48,6 +48,14 @@ namespace MovieLibraryOO
                     UserRating userRating = new UserRating();
                     userRating.UserRatesMovie();
                     break;
+                case "8":
+                    TopRated topRated = new TopRated();
+                    topRated.Ranking();
+                    break;
+                case "9":
+                    AddGenre addGenre = new AddGenre();
+                    addGenre.addGenreToMovie();
+                    break;
                 case "q":
                 case "Q":
                     File.Delete("pass.cnn");
@@ -64,17 +72,17 @@ namespace MovieLibraryOO
             void startUp()
             {
                 Console.ForegroundColor = ConsoleColor.Blue;
-                Console.WriteLine("\n\t|    " + " YOUR MOVIE SELECTION" + "       |");
+                Console.WriteLine("\n\t\t|       " + " YOUR MOVIE SELECTION" + "        |");
                 Console.ForegroundColor = ConsoleColor.Green;
-                Console.WriteLine("\t| " + "search add update delete show" + "  |");
+                Console.WriteLine("\t\t|    " + "search add update delete show" + "   |");
                 Console.ForegroundColor = ConsoleColor.White;
-                System.Console.WriteLine("\t   1      2     3     4     5");
+                System.Console.WriteLine("\t\t      1      2     3     4     5");
                 Console.ForegroundColor = ConsoleColor.Blue;
-                Console.WriteLine("\n\t|    " + " YOUR QUERY SELECTION" + "        |");
+                Console.WriteLine("\n\t\t|       " + " YOUR QUERY SELECTION" + "        |");
                 Console.ForegroundColor = ConsoleColor.Green;
-                Console.WriteLine("\t| " + "NewUser Rate update delete quit" + " |");
+                Console.WriteLine("\t\t| " + "New(User) Rate Ranking Genre  Quit" + " |");
                 Console.ForegroundColor = ConsoleColor.White;
-                System.Console.WriteLine("\t   6      7     8     9     Q");
+                System.Console.WriteLine("\t\t   6         7     8      9     Q");
             }
         }
     }
