@@ -6,9 +6,12 @@ namespace MovieLibraryOO.Queries
 {
     public class TopRated
     {
+        public int min = 0;
+        public int max = 0;
+        NLogger nLogger = new NLogger();
         public void rankingHub()
         {
-            NLogger nLogger = new NLogger();
+
             Console.ForegroundColor = ConsoleColor.DarkMagenta;
             System.Console.WriteLine("\t\tTREND DASHBOARD\n");
             Console.ForegroundColor = ConsoleColor.Cyan;
@@ -22,7 +25,7 @@ namespace MovieLibraryOO.Queries
             else
             {
                 nLogger.nLog("View Ranking by Age");
-                ageRanking();
+                bracket();
             }
         }
         public static void occupationRanking()
@@ -33,7 +36,8 @@ namespace MovieLibraryOO.Queries
                 {
                     int dbCount = db.Occupations.Count();
                     int count = dbCount;
-                    System.Console.WriteLine("\tTOP RATED FIVE STAR MOVIES BY USER OCCUPATION\n");
+                    System.Console.WriteLine("\tTOP RATED FIVE STAR MOVIES BY USER OCCUPATION");
+                    System.Console.WriteLine("\t\t(In reverse alphabetical order)\n");
                     Console.ForegroundColor = ConsoleColor.White;
                     int half = 0;
                 next:
@@ -83,14 +87,14 @@ namespace MovieLibraryOO.Queries
 
             }
         }
-        private static void ageRanking()
+        private void ageRanking()
         {
             try
             {
                 using (var db = new MovieContext())
                 {
-                    var selectedUser = db.Users.Where(x => x.Age > 46 && x.Age < 49);
-                    var users = selectedUser.Include(x => x.UserMovies).ThenInclude(x => x.Movie).ToList();
+                    var selectedUser = db.Users.Where(x => x.Age > min && x.Age < max);
+                    var users = selectedUser.Include(x => x.UserMovies).ThenInclude(x => x.Movie).OrderBy(x=>x.Age).ToList();
 
                     foreach (var user in users)
                     {
@@ -114,14 +118,59 @@ namespace MovieLibraryOO.Queries
             }
 
         }
-        private static void bracket()
+        private void bracket()
         {
-            System.Console.WriteLine("Select by Age Bracket");
+            System.Console.WriteLine("\t\tSelect by Age Bracket\n");
+            goAgain:
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            System.Console.Write("[K]id\t[Y]outh\t[M]iddle-Aged\t[S]enior:\t");
+            System.Console.WriteLine("\tDisplay in order by age.");
+            Console.ForegroundColor = ConsoleColor.White;
+            var agePicked = Console.ReadLine();
 
-            // 0–14 years old(pediatric group), 
-            // 15–47 years old(youth group), 
-            // 48–63 years old(middle-aged group) 
-            // and ≥ 64 years old(elderly group). 
+            switch (agePicked)
+            {
+                 // 0–14 years old(pediatric group), Kids
+                case "K":
+                case "k":
+                case "1":
+                    min = 0;
+                    max = 14;
+                    nLogger.nLog("Rank: Kids");
+                    break;
+                 // 15–47 years old(youth group), Youth
+                case "Y":
+                case "y":
+                case "2":
+                    min = 15;
+                    max = 47;
+                    nLogger.nLog("Rank: Youth");
+                    break;
+                // 48–63 years old(middle-aged group) Middle-Aged
+                case "M":
+                case "m":
+                case "3":
+                    min = 48;
+                    max = 63;
+                    nLogger.nLog("Rank: Middle-Age");
+                    break;
+                // and ≥ 64 years old(elderly group). Senior
+                case "S":
+                case "s":
+                case "4":
+                    min = 64;
+                    max = 120;
+                    nLogger.nLog("Rank: Senior");
+                    break;
+
+                default:
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    System.Console.Write("\t Wrong input.\n");
+                    Console.ForegroundColor = ConsoleColor.White;
+                    goto goAgain;
+
+            }
+            ageRanking();
 
         }
 
