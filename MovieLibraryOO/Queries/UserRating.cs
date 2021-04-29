@@ -11,6 +11,7 @@ namespace MovieLibraryOO.Queries
     {
         public void UserRatesMovie()
         {
+            NLogger nLogger = new NLogger(); 
             try
             {
                 Menu menu = new Menu();
@@ -31,6 +32,7 @@ namespace MovieLibraryOO.Queries
                     System.Console.Write("\t Entering the User's ID\t");
                     goto andAgain;
                 }
+                nLogger.nLog("User Id : " + userIdInt);
                 using (var db = new MovieContext())
                 {
                     int count = 0;
@@ -89,7 +91,6 @@ namespace MovieLibraryOO.Queries
                     System.Console.Write("\t Entering the movie's ID or [a]bort:\t");
                     goto andAgain;
                 }
-
                 Console.ForegroundColor = ConsoleColor.Yellow;
                 System.Console.Write("Step 4 of 4: Select Rating\t\t");
                 Console.ForegroundColor = ConsoleColor.White;

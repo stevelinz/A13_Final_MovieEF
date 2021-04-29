@@ -11,6 +11,7 @@ namespace MovieLibraryOO.CRUD
         {
             try
             {
+                NLogger nLogger = new NLogger();
                 Menu menu = new Menu();
                 System.Console.WriteLine("\tIdentify the Movie to delete.");
                 lookThenDelete();
@@ -28,6 +29,7 @@ namespace MovieLibraryOO.CRUD
                 {
                     var context = new MovieContext();
                     var movie = context.Movies.Single(a => a.Id == movIdDel);
+                    nLogger.nLog("Movie Id selected: " + movIdDel);
                     var movieGenres = context.MovieGenres.Where(b => EF.Property<int>(b, "MovieId") == movIdDel);
                     foreach (var movieGenre in movieGenres)
                     {
@@ -39,6 +41,7 @@ namespace MovieLibraryOO.CRUD
                         movie.UserMovies.Remove(userMovie);
                     }
                     context.Remove(movie);
+                    nLogger.nLog("Delete committed");
                     context.SaveChanges();
                     menu.menuSelect();
                 }

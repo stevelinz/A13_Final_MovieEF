@@ -12,6 +12,7 @@ namespace MovieLibraryOO.CRUD
     {
         public void searchMovie()
         {
+            NLogger nLogger = new NLogger();
             Menu menu = new Menu();
             try
             {
@@ -58,7 +59,8 @@ namespace MovieLibraryOO.CRUD
                      userRating.rateReturn();
                 }   
                 else
-                {
+                { 
+                   nLogger.nLog("Leaving Movie Search");
                    menu.menuSelect();
                 }
                  

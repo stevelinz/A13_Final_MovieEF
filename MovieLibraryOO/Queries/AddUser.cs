@@ -8,6 +8,7 @@ namespace MovieLibraryOO.Queries
 {
     public class AddUser
     {
+        NLogger nLogger = new NLogger();
         long idUsed = 0;
         public void newUserCreate()
         {
@@ -40,6 +41,7 @@ namespace MovieLibraryOO.Queries
                     System.Console.WriteLine("An age between 1 and 120");
                     goto andAgain;
                 }
+                nLogger.nLog("Age of User: " + ageInt);
                 Console.ForegroundColor = ConsoleColor.Yellow;
                 System.Console.Write("Step 2 of 4: Gender? [M/F]\t");
                 Console.ForegroundColor = ConsoleColor.White;
@@ -57,6 +59,7 @@ namespace MovieLibraryOO.Queries
                     gender = "";
                     goto andTryAgain;
                 }
+                nLogger.nLog("Gender: " + gender);
                 Console.ForegroundColor = ConsoleColor.Yellow;
                 System.Console.Write("Step 3 of 4: Zipcode?\t\t");
                 Console.ForegroundColor = ConsoleColor.White;
@@ -68,6 +71,7 @@ namespace MovieLibraryOO.Queries
                     System.Console.Write("\t Zipcodes are at least 5 characters ");
                     goto andTryZipAgain;
                 }
+                nLogger.nLog("Zip: " + zip);
                 Console.ForegroundColor = ConsoleColor.Blue;
                 System.Console.Write("Step 4 of 4: Occupation?");
                 Console.ForegroundColor = ConsoleColor.White;
@@ -107,6 +111,7 @@ namespace MovieLibraryOO.Queries
                     System.Console.Write("\t Enter a number");
                     goto andOccAgain;
                 }
+                nLogger.nLog("Occupation ID: " + occInt);
 
                 // end of gathering new user data
 

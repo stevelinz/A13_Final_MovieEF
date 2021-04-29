@@ -17,5 +17,22 @@ SELECT * FROM MovieGenres where MovieId = 1
   join Genres g on g.Id = mg.GenreId
   where mg.MovieId = 1
 
-  --#############################################
+  --################RANKING########################
+
+  SELECT      Movies.Title , Occupations.Name , Occupations.Id
+ 
+  FROM [Test2Movie_SL_22097].[dbo].[Users]
+
+
+ join Occupations
+ on Occupations.Id = Users.OccupationId  
+ 
+ join UserMovies
+ on Users.Id = UserMovies.UserId  
+ 
+ join Movies
+ on UserMovies.MovieId = Movies.Id  
+
+ where UserMovies.Rating = 5     and Occupations.Id = 21
+ order by Occupations.Name
   

@@ -14,6 +14,7 @@ namespace MovieLibraryOO.Queries
 
         public void displayAllMovies()
         {
+            NLogger nLogger = new NLogger();
             System.Console.Write("How many movies do you want to see at a time?\t");
             andAgain:
             
@@ -27,6 +28,7 @@ namespace MovieLibraryOO.Queries
                 System.Console.WriteLine("A number between 1 and 300");
                 goto andAgain;
             }
+            
             else
             { 
                 timeSaved = times;         
@@ -52,6 +54,7 @@ namespace MovieLibraryOO.Queries
                             var nextMove = Console.ReadLine();
                             if(nextMove == "E" || nextMove == "e" || nextMove == "Q" || nextMove == "q")
                             {
+                                nLogger.nLog("Number of Movies Displayed a once: " + times);
                                 Menu menu = new Menu();
                                 menu.menuSelect();
                             }

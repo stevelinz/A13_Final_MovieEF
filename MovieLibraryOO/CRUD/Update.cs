@@ -10,6 +10,7 @@ namespace MovieLibraryOO.CRUD
     {
         public void updateMovie()
         {
+            NLogger nLogger = new NLogger();
             Menu menu = new Menu();
             try
             {
@@ -20,15 +21,16 @@ namespace MovieLibraryOO.CRUD
                 andAgain:
                 var movId = System.Console.ReadLine();
                 if (movId.Equals("a") || movId.Equals("q")) menu.menuSelect();
-                int movIdDel;
-                if (!Int32.TryParse(movId, out movIdDel))
+                int movIdUp;
+                if (!Int32.TryParse(movId, out movIdUp))
                 {
                     System.Console.Write("\t Entering the movie's ID or [a]bort:\t");
                     goto andAgain;
                 }
                 else
                 {
-                    var adjustedTitle = db.Movies.First(d => d.Id == movIdDel);
+                    nLogger.nLog("Updating Movie Id: " + movIdUp);
+                    var adjustedTitle = db.Movies.First(d => d.Id == movIdUp);
                     System.Console.Write("Enter the updated title or [a]bort\n");
                     System.Console.Write("for the movie:\t");
                     var newMovieTitle = System.Console.ReadLine();

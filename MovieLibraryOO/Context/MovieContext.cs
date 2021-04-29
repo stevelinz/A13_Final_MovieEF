@@ -26,16 +26,21 @@ namespace MovieLibraryOO.Context
 
             try
             {
-                  string user = System.IO.File.ReadAllText(Path.Combine(System.Environment.CurrentDirectory, "user.cnn"));
-                  string pass = System.IO.File.ReadAllText(Path.Combine(System.Environment.CurrentDirectory, "pass.cnn"));
+                 string user = System.IO.File.ReadAllText(Path.Combine(System.Environment.CurrentDirectory, "user.cnn"));
+                 string pass = System.IO.File.ReadAllText(Path.Combine(System.Environment.CurrentDirectory, "pass.cnn"));
 
-                optionsBuilder.UseLazyLoadingProxies()
-               .UseSqlServer(@"Server=bitsql.wctc.edu; Database=1_SL_22097; User Id=" + user + "; Password=" + pass + ";");
+            //     optionsBuilder.UseLazyLoadingProxies()
+            //    .UseSqlServer(@"Server=bitsql.wctc.edu; Database=1_SL_22097; User Id=" + user + "; Password=" + pass + ";");
+
+             
+              // optionsBuilder.
+               optionsBuilder.UseLazyLoadingProxies()
+               .UseSqlServer(@"Server=bitsql.wctc.edu; Database=FIN_TEST_SL_22097; User Id=" + user + "; Password=" + pass + ";");
 
                 // IMPORTANT NEED THIS LINE WHEN YOU RUN THE MIGRATION (it can't guess the login/pw) 
                 // the ONLY line uncommented should be the updated line below 
              // optionsBuilder.UseLazyLoadingProxies()
-              //  optionsBuilder.UseSqlServer(@"Server=bitsql.wctc.edu; Database=Test3Movie_SL_22097; User Id=****; Password=********;");
+           //  optionsBuilder.UseSqlServer(@"Server=bitsql.wctc.edu; Database=FIN_TEST_SL_22097; User Id=slinz; Password=000554483;");
 
             }
             catch (System.Exception)

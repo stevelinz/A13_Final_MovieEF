@@ -10,11 +10,13 @@ namespace MovieLibraryOO.CRUD
         public void AddMovie()
         {
             Menu menu = new Menu();
+            NLogger nLogger = new NLogger();
             try
             {
                 System.DateTime date = DateTime.Today;
                 addExplain();
                 var addMovieInput = Console.ReadLine();
+                nLogger.nLog("Added: " + addMovieInput);
                 if (addMovieInput.Equals("a") || addMovieInput.Equals("q"))
                 {
                     menu.menuSelect();
@@ -25,6 +27,7 @@ namespace MovieLibraryOO.CRUD
                     {
                         var movie = new Movie { Title = addMovieInput, ReleaseDate = date };
                         db.Add(movie);
+                        nLogger.nLog("Movie Add Committed");
                         db.SaveChanges();
                         menu.menuSelect();
                     }
