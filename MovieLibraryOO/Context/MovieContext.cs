@@ -40,7 +40,7 @@ namespace MovieLibraryOO.Context
                 // IMPORTANT NEED THIS LINE WHEN YOU RUN THE MIGRATION (it can't guess the login/pw) 
                 // the ONLY line uncommented should be the updated line below 
              // optionsBuilder.UseLazyLoadingProxies()
-           //  optionsBuilder.UseSqlServer(@"Server=bitsql.wctc.edu; Database=FIN_TEST_SL_22097; User Id=slinz; Password=000554483;");
+           //  optionsBuilder.UseSqlServer(@"Server=bitsql.wctc.edu; Database=FIN_TEST_SL_22097; User Id=*****; Password=******;");
 
             }
             catch (System.Exception)
