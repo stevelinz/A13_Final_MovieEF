@@ -18,4 +18,3 @@ In this iteration they'll be much more in the way of queries.
  * Scroll Movies with their Genres
  * And More  
 
-[]

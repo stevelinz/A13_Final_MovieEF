@@ -58,7 +58,7 @@ namespace MovieLibraryOO
                 case "8":
                     nLogger.nLog("Menu: Top Rated");
                     TopRated topRated = new TopRated();
-                    topRated.Ranking();
+                    topRated.rankingHub();
                     break;
                 case "9":
                     nLogger.nLog("Menu: Add Genre");
