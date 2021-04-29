@@ -123,8 +123,11 @@ namespace MovieLibraryOO.Queries
             System.Console.WriteLine("\t\tSelect by Age Bracket\n");
             goAgain:
             Console.ForegroundColor = ConsoleColor.Cyan;
-            System.Console.Write("[K]id\t[Y]outh\t[M]iddle-Aged\t[S]enior:\t");
             System.Console.WriteLine("\tDisplay in order by age.");
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            System.Console.Write("[K]id\t[Y]outh\t[M]iddle-Aged\t[S]enior:\t");
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            
             Console.ForegroundColor = ConsoleColor.White;
             var agePicked = Console.ReadLine();
 
