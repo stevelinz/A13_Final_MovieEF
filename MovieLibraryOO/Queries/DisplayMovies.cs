@@ -1,8 +1,6 @@
 using MovieLibraryOO.Context;
-using MovieLibraryOO.DataModels;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
-using System.IO;
 using System;
 
 namespace MovieLibraryOO.Queries

@@ -16,7 +16,7 @@ namespace MovieLibraryOO.CRUD
                 System.Console.WriteLine("\tIdentify the Movie to delete.");
                 lookThenDelete();
                 System.Console.Write("\tDelete the movie by entering it's ID or [a]bort:\t");
-                andAgain:
+            andAgain:
                 var movId = System.Console.ReadLine();
                 if (movId.Equals("a") || movId.Equals("q")) menu.menuSelect();
                 int movIdDel;
@@ -28,6 +28,9 @@ namespace MovieLibraryOO.CRUD
                 else
                 {
                     var context = new MovieContext();
+
+                    context.ChangeTracker.LazyLoadingEnabled = false;
+
                     var movie = context.Movies.Single(a => a.Id == movIdDel);
                     nLogger.nLog("Movie Id selected: " + movIdDel);
                     var movieGenres = context.MovieGenres.Where(b => EF.Property<int>(b, "MovieId") == movIdDel);
@@ -41,15 +44,14 @@ namespace MovieLibraryOO.CRUD
                         movie.UserMovies.Remove(userMovie);
                     }
                     context.Remove(movie);
-                    nLogger.nLog("Delete committed");
                     context.SaveChanges();
+                    nLogger.nLog("Delete committed Id: " + movIdDel);
                     menu.menuSelect();
                 }
             }
 
             catch (System.Exception)
             {
-
                 System.Console.WriteLine("Opps ... wrong login or password ....");
                 System.Console.WriteLine("\t....(Or maybe you forced an exit (Ctl+C)) ");
                 System.Console.WriteLine("\t...........(Or maybe an incorrect input) ");
@@ -63,7 +65,7 @@ namespace MovieLibraryOO.CRUD
         {
             int count = 0;
             MovieContext db = new MovieContext();
-            andAgain:
+        andAgain:
 
             System.Console.Write("Provide part of the title of the movie.\t");
             var search = Console.ReadLine();

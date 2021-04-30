@@ -34,7 +34,7 @@ namespace MovieLibraryOO.CRUD
                     System.Console.Write("Enter the updated title or [a]bort\n");
                     System.Console.Write("for the movie:\t");
                     var newMovieTitle = System.Console.ReadLine();
-                    if (newMovieTitle.Equals("a") || newMovieTitle.Equals("q")) menu.menuSelect();
+                    if (newMovieTitle.Equals("a") || newMovieTitle.Equals("A") || newMovieTitle.Equals("q")) menu.menuSelect();
                     adjustedTitle.Title = newMovieTitle;
                     db.SaveChanges();
                     menu.menuSelect();

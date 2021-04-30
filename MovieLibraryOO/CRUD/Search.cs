@@ -1,4 +1,3 @@
-using System.Runtime.InteropServices;
 using System;
 using System.IO;
 using System.Linq;
@@ -44,7 +43,7 @@ namespace MovieLibraryOO.CRUD
                 System.Console.WriteLine("\n"); 
 
                 System.Console.Write("Do you want to [S]earch Movies again?\t");
-                System.Console.Write("(Any other key to Continue)\t");
+                System.Console.Write("(Enter to Continue)\t");
                 var reSearch = Console.ReadLine();
                 UserRating userRating = new UserRating(); 
                 string testRate = System.IO.File.ReadAllText(Path.Combine(System.Environment.CurrentDirectory, "rate.sav"));

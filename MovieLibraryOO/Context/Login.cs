@@ -1,8 +1,5 @@
 using System;
 using System.IO;
-using System.Linq;
-using Microsoft.EntityFrameworkCore;
-using MovieLibraryOO.Context;
 using MovieLibraryOO.Queries;
 
 namespace MovieLibraryOO
@@ -30,8 +27,6 @@ namespace MovieLibraryOO
 
             Count count = new Count();
             count.countMovie();
-
-           
 
                 Menu menu = new Menu();
                 menu.menuSelect();
