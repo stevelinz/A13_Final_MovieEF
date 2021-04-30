@@ -65,8 +65,9 @@ namespace MovieLibraryOO.Queries
             int count = 0;
         andAgain:
 
-            System.Console.Write("Provide part of the title of the movie.\t");
+            System.Console.Write("Provide part of the title of the movie, or [a]bort.\t");
             var search = Console.ReadLine();
+            if(search == "A" || search == "a" || search == "q") menu.menuSelect();
             if (search.Length < 2) goto andAgain;
 
             using (db = new MovieContext())
@@ -95,7 +96,6 @@ namespace MovieLibraryOO.Queries
             System.Console.WriteLine("\n");
         }
 
-
         void viewGenreList()
         {
             try
@@ -118,10 +118,11 @@ namespace MovieLibraryOO.Queries
                         }
                     }
                 }
-                System.Console.Write("\nEnter the Movie ID of the Movie you want to add to the Genre to\t");
+                System.Console.Write("\nEnter the Movie ID of the Movie you want to add to the Genre to or [a]bort\t");
                 int movieSelectInt = 0;
             andMovAgain:
                 var movieSelect = Console.ReadLine();
+                if(movieSelect == "a" || movieSelect == "A" || movieSelect == "q") menu.menuSelect();
                 if (!Int32.TryParse(movieSelect, out movieSelectInt))
                 {
                     System.Console.Write("\t Enter a number");
@@ -136,7 +137,6 @@ namespace MovieLibraryOO.Queries
                     System.Console.Write("\t Enter a number");
                     goto andGenAgain;
                 }
-                System.Console.WriteLine(movieSelectInt + " " + genreSelectInt);
 
                 var query = "INSERT INTO  MovieGenres (GenreId, MovieId) VALUES ("
                 + genreSelectInt + "," + movieSelectInt + ")";

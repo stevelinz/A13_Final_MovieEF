@@ -43,11 +43,11 @@ namespace MovieLibraryOO.CRUD
                 System.Console.WriteLine("\n"); 
 
                 System.Console.Write("Do you want to [S]earch Movies again?\t");
-                System.Console.Write("(Enter to Continue)\t");
+                System.Console.Write("([Enter] to Continue to the next action)\t");
                 var reSearch = Console.ReadLine();
                 UserRating userRating = new UserRating(); 
                 string testRate = System.IO.File.ReadAllText(Path.Combine(System.Environment.CurrentDirectory, "rate.sav"));
-                if(reSearch == "S" || reSearch == "s")
+                if(reSearch == "S" || reSearch == "s" || reSearch == "Y" || reSearch == "y" || reSearch == "a")
                 {
                    count = 0;
                    goto andAgain; 

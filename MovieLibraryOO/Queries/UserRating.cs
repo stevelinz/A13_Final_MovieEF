@@ -56,9 +56,9 @@ namespace MovieLibraryOO.Queries
                     Console.ForegroundColor = ConsoleColor.Yellow;
                     System.Console.Write("Step 2 of 4: Search Movie\t\t");
                     Console.ForegroundColor = ConsoleColor.White;
-                    System.Console.Write("Find the Movie to Rate. Hit any key\t");
-                    Console.ReadKey();
-                    System.Console.WriteLine();
+                    // System.Console.Write("Find the Movie to Rate. Hit any key\t");
+                    // Console.ReadKey();
+                    // System.Console.WriteLine();
                     Search search = new Search();
                     search.searchMovie();
 
@@ -126,7 +126,7 @@ namespace MovieLibraryOO.Queries
                     db.SaveChanges();
                     File.WriteAllText(Path.Combine(Environment.CurrentDirectory, "rate.sav"), "rate");
 
-                    System.Console.WriteLine($"User: {userWhoRates} submitted a {userRateInt} star(s) rating at {date} for Movie Id: {movIdInt}");
+                    System.Console.WriteLine($"User: {userWhoRates} submitted a {userRateInt} star rating at {date} for Movie Id: {movIdInt}");
 
                     menu.menuSelect();
                 }
