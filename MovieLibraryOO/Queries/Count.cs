@@ -21,7 +21,7 @@ namespace MovieLibraryOO.Queries
 
                 var movieCount = movieList.Count();
 
-                System.Console.WriteLine("Current number of Movies in the database: " + movieCount);
+                System.Console.WriteLine("Movies in the database: " + movieCount);
 
                 var menu = new Menu();
                 menu.menuSelect();
