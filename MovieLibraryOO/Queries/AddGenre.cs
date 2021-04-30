@@ -19,7 +19,7 @@ namespace MovieLibraryOO.Queries
                 MovieContext db = new MovieContext();
                 System.Console.WriteLine("\nIdentify the Movie to update Genres.");
                 Console.ForegroundColor = ConsoleColor.Green;
-                System.Console.WriteLine("Genres will only be added never deleted or modified.");
+                System.Console.WriteLine("Genres will be added never deleted or modified.");
                 System.Console.WriteLine("This is because First Impressions count and shall not be forgotten");
                 Console.ForegroundColor = ConsoleColor.White;
                 System.Console.WriteLine();

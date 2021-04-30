@@ -40,7 +40,7 @@ namespace MovieLibraryOO.Context
             }
             catch (System.Exception)
             {
-                System.Console.WriteLine("Humm, something went wrong this time.");
+                System.Console.WriteLine("Humm, something went wrong this time in Context.");
             }
         }
 
