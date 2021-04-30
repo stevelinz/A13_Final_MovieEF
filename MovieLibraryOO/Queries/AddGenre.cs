@@ -8,7 +8,6 @@ namespace MovieLibraryOO.Queries
 {
     public class AddGenre
     {
-
         Menu menu = new Menu();
         MovieContext db = new MovieContext();
         public void addGenreToMovie()
