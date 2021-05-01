@@ -1,5 +1,6 @@
 using System.IO;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using MovieLibraryOO.DataModels;
 namespace MovieLibraryOO.Context
 {
@@ -23,19 +24,22 @@ namespace MovieLibraryOO.Context
         public DbSet<UserMovie> UserMovies { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
+            // var config = new ConfigurationBuilder()
+            // .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
+            // .Build();
 
             try
             {
-                 string user = System.IO.File.ReadAllText(Path.Combine(System.Environment.CurrentDirectory, "user.cnn"));
-                 string pass = System.IO.File.ReadAllText(Path.Combine(System.Environment.CurrentDirectory, "pass.cnn"));
+                string user = System.IO.File.ReadAllText(Path.Combine(System.Environment.CurrentDirectory, "user.cnn"));
+                string pass = System.IO.File.ReadAllText(Path.Combine(System.Environment.CurrentDirectory, "pass.cnn"));
 
 
-               optionsBuilder.UseLazyLoadingProxies()
-               .UseSqlServer(@"Server=bitsql.wctc.edu; Database=A_13_SL_22097; User Id=" + user + "; Password=" + pass + ";");
+                optionsBuilder.UseLazyLoadingProxies()
+                .UseSqlServer(@"Server=bitsql.wctc.edu; Database=A_13_SL_22097; User Id=" + user + "; Password=" + pass + ";");
 
-            // IMPORTANT NEED THIS LINE WHEN YOU RUN THE MIGRATION (it can't guess the login/pw) 
-            // the ONLY line uncommented should be the updated line below 
-            //  optionsBuilder.UseSqlServer(@"Server=bitsql.wctc.edu; Database=A_13_SL_22097; User Id=*****; Password=****;");
+                // IMPORTANT NEED THIS LINE WHEN YOU RUN THE MIGRATION (it can't guess the login/pw) 
+                // the ONLY line uncommented should be the updated line below 
+                //  optionsBuilder.UseSqlServer(@"Server=bitsql.wctc.edu; Database=A_13_SL_22097; User Id=*****; Password=****;");
 
             }
             catch (System.Exception)
