@@ -52,7 +52,7 @@ namespace MovieLibraryOO.CRUD
 
             catch (System.Exception)
             {
-                System.Console.WriteLine("Opps ... wrong login or password ....");
+                System.Console.WriteLine("Wrong login or password ....");
                 System.Console.WriteLine("\t....(Or maybe you forced an exit (Ctl+C)) ");
                 System.Console.WriteLine("\t...........(Or maybe an incorrect input) ");
                 System.Console.WriteLine("\t.....as you started to delete a Movie ");

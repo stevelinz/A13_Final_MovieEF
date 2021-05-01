@@ -19,8 +19,8 @@ namespace MovieLibraryOO.Queries
             try
             {
                 MovieContext db = new MovieContext();
-                System.Console.WriteLine("\nIdentify the Movie to update Genres.");
-                Console.ForegroundColor = ConsoleColor.Green;
+                System.Console.WriteLine("\nIdentify the Movie to Insert Genre.");
+                Console.ForegroundColor = ConsoleColor.DarkMagenta;
                 System.Console.WriteLine("Genres will be added never deleted or modified.");
                 System.Console.WriteLine("This is because First Impressions count and shall not be forgotten");
                 Console.ForegroundColor = ConsoleColor.White;
@@ -70,7 +70,7 @@ namespace MovieLibraryOO.Queries
             }
             catch (System.Exception)
             {
-                System.Console.WriteLine("Opps ... wrong login or password ..... ");
+                System.Console.WriteLine("Wrong login or password ..... ");
                 System.Console.WriteLine("\t ... ( maybe incorrect input) ");
                 System.Console.WriteLine("\t ... (Or maybe you forced an exit (Ctl+C)) ");
                 System.Console.WriteLine("\tas you started to updating a Movie's Genre(s) ");
